@@ -30,8 +30,8 @@ $(function() {
         yAxis: {
             //minPadding: 0.2,
             //maxPadding: 0.2,
-            min: -5,
-        	max: 5,
+            min: 0,
+        	max: 2,
         	startOnTick: false,
         	endOnTick: false,
             title: {
@@ -77,7 +77,7 @@ function requestStatsData() {
             var series = chart1.series[0];
             var shift = series.data.length > 30;
             var chartDataDate = new Date().getTime();
-            chart1.series[0].addPoint([chartDataDate,obj.rtsensorvalue],true,shift);
+            chart1.series[0].addPoint([chartDataDate,parseFloat(obj.rtsensorvalue)],true,shift);
         }
 
 
@@ -107,7 +107,7 @@ function requestStatsData() {
 <BR>
 <BR>
 <b>Debugging Info</b>
-<div id="debugging"> </div>
+<div id="debugging"> v.0.1</div>
 
 <script>
 
