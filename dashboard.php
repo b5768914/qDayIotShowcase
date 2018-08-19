@@ -75,14 +75,14 @@ function requestStatsData() {
         
         if(secondsDif<2){
             var series = chart1.series[0];
-            var shift = series.data.length > 30;
+            var shift = series.data.length > 240;
             var chartDataDate = new Date().getTime();
             chart1.series[0].addPoint([chartDataDate,parseFloat(obj.rtsensorvalue)],true,shift);
         }
 
 
     });
-    setTimeout(requestStatsData, 1000); 
+    setTimeout(requestStatsData, 500); 
 }
 
 
