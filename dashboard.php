@@ -115,7 +115,29 @@ function requestStatsData() {
 
 
     });
+    requestDeviceState();
     setTimeout(requestStatsData, 1000); 
+}
+
+function requestDeviceState(){
+    $.ajax({
+        url: "getTableStoreEntities.php?entity=status"
+    }).then(function(data) {
+        var obj = jQuery.parseJSON(data);
+        //var serverDate = obj.Timestamp;
+        var serverDate = new Date(obj.Timestamp);
+        var nowDate = new Date();
+        nowDate.setHours(nowDate.getHours()); //was initially getHours() -2
+        var dateDif = serverDate.getTime() - nowDate.getTime();
+        var Seconds_from_T1_to_T2 = dateDif / 1000;
+        var secondsDif = Math.abs(Seconds_from_T1_to_T2);
+        
+        if(secondsDif<2){
+            $('#debugging').html("rotorState: "+obj.status+"<BR>");
+        }
+
+
+    });
 }
 
 
