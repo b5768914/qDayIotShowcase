@@ -115,7 +115,7 @@ function requestStatsData() {
 
 
     });
-    setTimeout(requestStatsData, 100); 
+    setTimeout(requestStatsData, 1000); 
 }
 
 
