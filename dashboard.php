@@ -62,7 +62,7 @@ $(function() {
         yAxis: {
             //minPadding: 0.2,
             //maxPadding: 0.2,
-            min: 1.2,
+            min: 0,
         	max: 2.2,
         	startOnTick: false,
         	endOnTick: false,
