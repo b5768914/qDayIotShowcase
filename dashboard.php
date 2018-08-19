@@ -30,10 +30,10 @@ Highcharts.theme = {
     legend: {
         itemStyle: {
             font: '9pt Trebuchet MS, Verdana, sans-serif',
-            color: 'black'
+            color: 'white'
         },
         itemHoverStyle:{
-            color: 'gray'
+            color: 'white'
         }   
     }
 };
@@ -52,7 +52,7 @@ $(function() {
             }
         },
         title: {
-            text: 'Live sensor aggregates'
+            text: 'rotor oscillation'
         },
         xAxis: {
             type: 'datetime',
@@ -110,6 +110,7 @@ function requestStatsData() {
             var shift = series.data.length > 120;
             var chartDataDate = new Date().getTime();
             chart1.series[0].addPoint([chartDataDate,parseFloat(obj.rtsensorvalue)],true,shift);
+            $('#sensorValue').html("serverDate: "+serverDate.toString()+"<BR>Value: "+obj.rtsensorvalue+"<BR>");
         }
 
 
@@ -143,7 +144,8 @@ function requestStatsData() {
 <BR>
 <BR>
 <b>Debugging Info</b>
-<div id="debugging"> v.0.13</div>
+<div id="sensorValue"></div>
+<div id="debugging"> v.0.14</div>
 
 <script>
 
