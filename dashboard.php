@@ -8,6 +8,40 @@
 <script>
 
 var chart1;
+Highcharts.theme = {
+    colors: ['#FFFFFF', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', 
+             '#FF9655', '#FFF263', '#6AF9C4'],
+    chart: {
+        backgroundColor: {
+            rgba(255, 255, 255, 0.0)
+        },
+    },
+    title: {
+        style: {
+            color: '#FFFFFF',
+            font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+    subtitle: {
+        style: {
+            color: '#FFFFFF',
+            font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+
+    legend: {
+        itemStyle: {
+            font: '9pt Trebuchet MS, Verdana, sans-serif',
+            color: 'black'
+        },
+        itemHoverStyle:{
+            color: 'gray'
+        }   
+    }
+};
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
+
 $(function() {
     chart1 = Highcharts.chart('container', {
         chart: {
@@ -30,8 +64,8 @@ $(function() {
         yAxis: {
             //minPadding: 0.2,
             //maxPadding: 0.2,
-            min: 0,
-        	max: 2,
+            min: 1.2,
+        	max: 2.2,
         	startOnTick: false,
         	endOnTick: false,
             title: {
@@ -75,30 +109,34 @@ function requestStatsData() {
         
         if(secondsDif<2){
             var series = chart1.series[0];
-            var shift = series.data.length > 240;
+            var shift = series.data.length > 120;
             var chartDataDate = new Date().getTime();
             chart1.series[0].addPoint([chartDataDate,parseFloat(obj.rtsensorvalue)],true,shift);
         }
 
 
     });
-    setTimeout(requestStatsData, 500); 
+    setTimeout(requestStatsData, 100); 
 }
 
 
 </script>
 </head>
-<body>
+<body bgcolor="#023E84" text="#FFFFFF">
 <BR>
     <p align="right">
-	&nbsp;<img src="logo.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>
+	&nbsp;<img src="qDayLogo.png"><BR>
 	
+ <!--   
 	<span style="color:#2E9AFE">
 	<i>
     IoT ShowCase&nbsp;&nbsp;
 	</i>
 	</span>
 	</p>
+
+    -->
+
     <BR>
 
 
@@ -107,7 +145,7 @@ function requestStatsData() {
 <BR>
 <BR>
 <b>Debugging Info</b>
-<div id="debugging"> v.0.12</div>
+<div id="debugging"> v.0.13</div>
 
 <script>
 
