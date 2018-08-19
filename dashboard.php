@@ -13,7 +13,7 @@ Highcharts.theme = {
              '#FF9655', '#FFF263', '#6AF9C4'],
     chart: {
         backgroundColor: {
-            rgba(255, 255, 255, 0.0)
+            'rgba(255, 255, 255, 0.0)'
         },
     },
     title: {
