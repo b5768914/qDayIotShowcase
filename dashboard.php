@@ -107,7 +107,7 @@ function requestStatsData() {
 <BR>
 <BR>
 <b>Debugging Info</b>
-<div id="debugging"> v.0.1</div>
+<div id="debugging"> v.0.12</div>
 
 <script>
 
