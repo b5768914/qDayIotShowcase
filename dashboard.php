@@ -133,7 +133,13 @@ function requestDeviceState(){
         var secondsDif = Math.abs(Seconds_from_T1_to_T2);
         
         if(secondsDif<2){
-            $('#debugging').html("rotorState: "+obj.status+"<BR>");
+            $('#motorState').html("<center>"+obj.status+"</center>");
+            if(obj.status == "running"){
+                $('#motorState').css("background-color", "#00FF00");
+            }
+            else{
+                $('#motorState').css("background-color", "#FF0000");
+            }
         }
 
 
@@ -148,6 +154,14 @@ function requestDeviceState(){
     <p align="right">
 	&nbsp;<img src="qDayLogo.png"><BR>
 	
+<table width="100%" border="0">
+    <tr height="25px">
+        <td width="10px"></td>
+        <td width="25%" bgcolor="grey" id="motorState"><center>standby</center></td>
+        <td width="25%" bgcolor="grey" id="errorState"><center>no error</center></td>
+        <td width="*"></td>
+    </tr>
+</table>
  <!--   
 	<span style="color:#2E9AFE">
 	<i>
