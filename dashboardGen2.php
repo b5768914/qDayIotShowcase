@@ -116,6 +116,7 @@ function requestStatsData() {
 
     });
     requestDeviceState();
+    requestDeviceError();
     setTimeout(requestStatsData, 1000); 
 }
 
@@ -146,7 +147,33 @@ function requestDeviceState(){
     });
 }
 
+function requestDeviceError(){
+    $.ajax({
+        url: "getTableStoreEntities.php?entity=errors"
+    }).then(function(data) {
+        var obj = jQuery.parseJSON(data);
+        //var serverDate = obj.Timestamp;
+        if(obj.value == "error"){
+            var serverDate = new Date(obj.Timestamp);
+            var nowDate = new Date();
+            nowDate.setHours(nowDate.getHours()); //was initially getHours() -2
+            var dateDif = serverDate.getTime() - nowDate.getTime();
+            var Seconds_from_T1_to_T2 = dateDif / 1000;
+            var secondsDif = Math.abs(Seconds_from_T1_to_T2);
+            
+            if(secondsDif<2){
+                $('#errorState').html("<center>ERROR</center>");
+                $('#errorState').css("background-color", "#FF0000");
+                
+            }
+        }
+        else {
+            $('#errorState').css("background-color", "grey");
+            $('#errorState').html("<center>no error</center>");
+        }
 
+    });
+}
 
 
 </script>
@@ -160,6 +187,7 @@ function requestDeviceState(){
     <tr height="25px">
         <td width="10px"></td>
         <td width="25%" bgcolor="grey" id="motorState"><center>standby</center></td>
+        <td width="25%" bgcolor="grey" id="errorState"><center>no error</center></td>
         <td width="*"></td>
     </tr>
 </table>
