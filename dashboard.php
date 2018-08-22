@@ -116,6 +116,7 @@ function requestStatsData() {
 
     });
     requestDeviceState();
+    requestDeviceError()
     setTimeout(requestStatsData, 1000); 
 }
 
