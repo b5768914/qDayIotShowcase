@@ -169,7 +169,7 @@ function requestDeviceError(){
         }
         else {
             $('#errorState').css("background-color", "grey");
-            $('#motorState').html("<center>no error</center>");
+            $('#errorState').html("<center>no error</center>");
         }
 
     });
